@@ -1,12 +1,24 @@
 import React from "react";
 
-function Header() {
+import PropTypes from "prop-types";
+
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  aboutText: PropTypes.string,
+};
+
+Navbar.defaultProps = {
+  title: "Set title here",
+  aboutText: "About Text",
+};
+
+function Navbar(props) {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            TextUtils
+            {props.title}
           </a>
           <button
             className="navbar-toggler"
@@ -28,7 +40,7 @@ function Header() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">
-                  About
+                  {props.aboutText}
                 </a>
               </li>
             </ul>
@@ -50,4 +62,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navbar;
