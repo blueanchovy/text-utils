@@ -22,6 +22,15 @@ function TextForm(props) {
     let newText = "";
     setText(newText);
   };
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+  const handleCopy = () => {
+    let enteredText = document.getElementById("myBox");
+    enteredText.select();
+    navigator.clipboard.writeText(enteredText.value);
+  };
   const handleChange = (e) => {
     setText(e.target.value);
   };
@@ -40,16 +49,22 @@ function TextForm(props) {
             onChange={handleChange}
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick}>
+        <button className="btn btn-primary m-1" onClick={handleUpClick}>
           Convert to uppercase
         </button>
-        {"   "}
-        <button className="btn btn-primary" onClick={handleLoClick}>
+
+        <button className="btn btn-primary m-1" onClick={handleLoClick}>
           Convert to lowercase
         </button>
-        {"   "}
-        <button className="btn btn-primary" onClick={handleClear}>
+
+        <button className="btn btn-primary m-1" onClick={handleClear}>
           Clear Text
+        </button>
+        <button className="btn btn-primary m-1" onClick={handleCopy}>
+          Copy Text
+        </button>
+        <button className="btn btn-primary m-1" onClick={handleExtraSpaces}>
+          Remove Extra Spaces
         </button>
       </div>
       <div className="container my-3">
