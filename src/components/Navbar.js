@@ -5,17 +5,24 @@ import PropTypes from "prop-types";
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
   aboutText: PropTypes.string,
+  mode: PropTypes.bool,
+  toggleMode: PropTypes.func,
 };
 
 Navbar.defaultProps = {
   title: "Set title here",
   aboutText: "About Text",
+  mode: false,
 };
 
 function Navbar(props) {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav
+        className={`navbar navbar-expand-lg navbar-${
+          props.mode ? "dark" : "light"
+        } bg-${props.mode ? "dark" : "light"}`}
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -55,6 +62,22 @@ function Navbar(props) {
                 Search
               </button>
             </form> */}
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckDefault"
+                onClick={props.toggleMode}
+              />
+              <label
+                className={`form-check-label text-${
+                  props.mode ? "light" : "dark"
+                }`}
+                htmlFor="flexSwitchCheckDefault"
+              >
+                Dark Mode
+              </label>
+            </div>
           </div>
         </div>
       </nav>

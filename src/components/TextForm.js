@@ -3,10 +3,12 @@ import React, { useState } from "react";
 
 TextForm.propType = {
   heading: PropTypes.string,
+  mode: PropTypes.bool,
 };
 
 TextForm.defaultProps = {
   heading: "Text-Area",
+  mode: false,
 };
 
 function TextForm(props) {
@@ -47,6 +49,9 @@ function TextForm(props) {
             placeholder="Enter text here"
             value={text}
             onChange={handleChange}
+            style={{
+              backgroundColor: props.mode ? "#212529" : "white",
+            }}
           ></textarea>
         </div>
         <button className="btn btn-primary m-1" onClick={handleUpClick}>
